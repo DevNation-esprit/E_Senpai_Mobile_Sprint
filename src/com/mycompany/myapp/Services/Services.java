@@ -10,6 +10,8 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.messaging.Message;
+import com.codename1.ui.Display;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.Blog;
 import com.mycompany.myapp.entities.Post;
@@ -63,6 +65,15 @@ public class Services {
         
         
         NetworkManager.getInstance().addToQueueAndWait(req);
+        Message m = new Message("Body of message");
+        String textAttachmentUri = null;
+        m.getAttachments().put(textAttachmentUri, "text/plain");
+        String imageAttachmentUri = null;
+        m.getAttachments().put(imageAttachmentUri, "image/png");
+        Display.getInstance().sendMessage(new String[] {"amani.methnani@esprit.tn"}, "Subject of message", m);
+        
+        
+        
         return var;
     }
     

@@ -66,7 +66,7 @@ public class ShowBlog extends Form {
             }
         
 
-        setTitle("Liste des Client");
+        setTitle("Liste des Blogs");
         String[] s = new String[]{"ID ", "Titre", "Contenu"};
         boolean b = true;
         
