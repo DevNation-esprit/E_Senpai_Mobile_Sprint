@@ -47,6 +47,7 @@ public class PasserQuizForm extends Form{
     Button btnPrev = new Button("Prev") ;
     Button btnValider = new Button("Valider") ;
     Button btnReesayer = new Button("Réessayer") ;
+       
     
     Container c1  ;
     Container c2  ;
@@ -58,12 +59,13 @@ public class PasserQuizForm extends Form{
         questions = ServiceQuestion.getInstance().getQuestionByQuiz(idQuiz );
         quiz.setQuestions(questions);
         setTitle("Passer quiz");
-        setLayout(BoxLayout.y());
+        setLayout(BoxLayout.y());       
         this.showQuestion(currentIndex);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());     
         showNextQuestion();
         showPrevQuestion() ;
         validerQuiz() ;
+            
     }
     
     private void showQuestion(int index){
@@ -72,8 +74,12 @@ public class PasserQuizForm extends Form{
         c2 = new Container( new BoxLayout(BoxLayout.X_AXIS)) ;
         c3 = new Container( new BoxLayout(BoxLayout.X_AXIS)) ;            
         c3.addAll(btnPrev,btnNext) ;
+        
+        Label title = new Label(quiz.getSujet()) ;
+        title.setUIID("title") ;
+        add(title);       
                
-        lbQposee = new Label(q.getQuestionPosee());
+        lbQposee = new Label((index+1)+ "/-"+ q.getQuestionPosee());
         c2.add(lbQposee) ;
         
         rbtn1 = new RadioButton(q.getReponseFausse1());
@@ -102,6 +108,11 @@ public class PasserQuizForm extends Form{
             default :
                 break;
         }
+        c1.setUIID("rbtns"); 
+        c2.setUIID("Qposee");
+        btnNext.setUIID("btn"); 
+        btnPrev.setUIID("btn");
+        btnValider.setUIID("btn");
         addAll(c2,c1,c3) ;
         add(btnValider) ;
         btnValider.setEnabled(false);

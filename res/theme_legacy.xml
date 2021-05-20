@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resource majorVersion="1" minorVersion="11" useXmlUI="false">
+    <theme name="Theme">
+        <val key="@OverlayThemes" value="theme" />
+        <val key="@imageMetadata" value="{}" />
+        <val key="@includeNativeBool" value="true" />
+    </theme>
+</resource>

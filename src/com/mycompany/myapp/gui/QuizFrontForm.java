@@ -25,7 +25,9 @@ public class QuizFrontForm extends Form {
         current = this ;
         setTitle("Quiz");
         setLayout(BoxLayout.y());
-        add(new Label("Tous les Quiz"));
+        Label title = new Label("Tous les Quiz") ;
+        title.setUIID("title") ;
+        add(title);       
         
         ArrayList<Quiz> quizzes = ServiceQuiz.getInstance().getListQuiz() ;
         for(Quiz q : quizzes){
@@ -44,6 +46,10 @@ public class QuizFrontForm extends Form {
                new PasserQuizForm(current, q.getId()).show() ;
            }
        });
+      /* Style s = lbSujet.getAllStyles() ;
+       s.setFgColor(100);*/
+        lbSujet.setUIID("lbl");
+        c1.setUIID("contQuiz"); 
        
        c1.add(lbSujet) ;
        c1.setLeadComponent(lbSujet);

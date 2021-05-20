@@ -118,7 +118,21 @@ public class ServiceQuestion {
         return resultOK;
     }
      
-     public Question parseSingleQuestion(String jsonTxt){
+    public boolean deleteQuestion(Question q,int idQ) {
+       String url = Statics.BASE_URL+"quiz_front_json/deleteQuestion?idQ="+idQ+"&id="+q.getId() ;
+        req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);              
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+    }   
+    
+    public Question parseSingleQuestion(String jsonTxt){
             questions = new ArrayList<>() ;
              JSONParser j = new JSONParser() ;
              Map<String,Object> questionListJson;
@@ -149,17 +163,6 @@ public class ServiceQuestion {
              Map<String,Object> questionListJson = j.parseJSON(new CharArrayReader(jsonTxt.toCharArray()));
              List<Map<String,Object>> list = (List<Map<String,Object>>)questionListJson.get("root");
              if(list.isEmpty()){
-                   q = new Question();
-                    float id = Float.parseFloat(questionListJson.get("id").toString());
-                    q.setId((int)id);
-                    q.setQuestionPosee(questionListJson.get("designation").toString());
-                    q.setReponseCorrecte(questionListJson.get("reponseCorrecte").toString());
-                    q.setReponseFausse1(questionListJson.get("reponseFausse1").toString());
-                    q.setReponseFausse2(questionListJson.get("reponseFausse2").toString());
-                    q.setReponseFausse3(questionListJson.get("reponseFausse3").toString());
-                    float note = Float.parseFloat(questionListJson.get("note").toString());
-                    q.setNote((int)note);
-                    questions.add(q);
                    return questions ;
              }
              else if(list.size() == 1){

@@ -11,6 +11,7 @@ import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
+import com.mycompany.myapp.entities.Note;
 import com.mycompany.myapp.entities.Test;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
@@ -24,10 +25,12 @@ import java.util.Map;
  */
 public class ServiceTest {
     private ArrayList<Test> tests ;
+    private ArrayList<Note> notes ;
     private static ServiceTest instance = null ;
     private boolean  resultOK ;
     private ConnectionRequest req ;
     private Test t ;
+    private Note n ;
     
     private ServiceTest(){
         req = new ConnectionRequest() ;            
@@ -53,6 +56,21 @@ public class ServiceTest {
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         return tests ;
+    }
+    
+    public ArrayList<Note> getListNotes(int idTest){
+        String url = Statics.BASE_URL+"quiz_front_json/notes/"+idTest;
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                notes = parseNote(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return notes ;
     }
     
     public ArrayList<Test> parseTest(String jsonTxt){
@@ -95,6 +113,41 @@ public class ServiceTest {
         } catch (IOException e) {
         }
         return tests ;
+    }
+    
+    public ArrayList<Note> parseNote(String jsonTxt){
+        try {
+            notes = new ArrayList<>() ;          
+            JSONParser j = new JSONParser() ;
+            Map<String,Object> quizsListJson = j.parseJSON(new CharArrayReader(jsonTxt.toCharArray()));
+            List<Map<String,Object>> list = (List<Map<String,Object>>)quizsListJson.get("root");
+            if(list.size() == 1){
+                n = new Note() ;
+                float note = Float.parseFloat(list.get(0).get("note").toString());
+                n.setNoteObtenue((int)note);
+                n.setNomEtudiant(list.get(0).get("nom").toString());
+             
+                notes.add(n);
+                return notes ;
+            }
+            else if(list.isEmpty())
+            {
+                return notes ;
+            }
+            else{                
+                for(Map<String,Object> obj : list){
+                    n = new Note();
+                    float note = Float.parseFloat(obj.get("note").toString());
+                    n.setNoteObtenue((int)note);
+                    n.setNomEtudiant(obj.get("nom").toString());
+                    notes.add(n);
+                }
+            }
+            
+            
+        } catch (IOException e) {
+        }
+        return notes ;
     }
     
     

@@ -6,7 +6,6 @@
 package com.mycompany.myapp.gui;
 
 import com.codename1.ui.Container;
-import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
@@ -30,7 +29,9 @@ public class TestBackForm extends Form {
         current = this ;
         setTitle("Test");
         setLayout(BoxLayout.y());
-        add(new Label("Tous les Tests"));
+        Label title = new Label("Tous les Tests") ;
+        title.setUIID("title") ;
+        add(title);  
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack()); 
         
         ArrayList<Test> tests = ServiceTest.getInstance().getListTestFormateur(user.getId());
@@ -48,7 +49,8 @@ public class TestBackForm extends Form {
        lbSujet.addPointerPressedListener((evt) -> {
            new TestDetailsForm(current, t.getId()).show(); 
        });
-       
+       lbSujet.setUIID("lbl");
+        c1.setUIID("contQuiz"); 
        c1.add(lbSujet) ;
        c1.setLeadComponent(lbSujet);
        add(c1 );

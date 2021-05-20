@@ -30,32 +30,23 @@ public class QuizAndTestBackForm extends Form{
         current = this ;
         setTitle("Quiz & Test");
         setLayout(BoxLayout.y());
-        add(new Label("choisir une option"));
-        Stroke borderStroke = new Stroke(2, Stroke.CAP_SQUARE, Stroke.JOIN_MITER, 1);
-        Button btnQuiz = new Button("Tous les Quizzes") ;
-        Button btnTest = new Button("Tous les Tests") ;
-        Style quizStyle = btnQuiz.getAllStyles();
-        quizStyle.setBorder(RoundBorder.create().
-        rectangle(true).
-        color(0xffffff).
-        strokeColor(0).
-        strokeOpacity(120).
-        stroke(borderStroke));
+        Label title = new Label("choisir une option") ;
+        title.setUIID("title") ;
+        add(title);  
         
-        Style testStyle = btnTest.getAllStyles() ;
-        testStyle.setBorder(Border.createBevelLowered(RIGHT, RIGHT, HAND_CURSOR, BASELINE));
-        testStyle.setMarginTop(10);
-        testStyle.setMarginLeft(30);
-        testStyle.setMarginRight(30);
-        
+        Label btnQuiz = new Label("Tous les Quizzes") ;
+        Label btnTest = new Label("Tous les Tests") ;
+       
+        btnQuiz.setUIID("lbl");
+        btnTest.setUIID("lbl");
         add(btnQuiz) ;
         add(btnTest) ;
         
-        btnQuiz.addActionListener((evt) -> {
+        btnQuiz.addPointerPressedListener((evt) -> {
             new QuizBackForm(current).show();
         });
         
-        btnTest.addActionListener((evt) -> {
+        btnTest.addPointerPressedListener((evt) -> {
             new TestBackForm(current).show();
         });
         

@@ -6,6 +6,7 @@
 package com.mycompany.myapp.gui;
 
 import com.codename1.components.SpanLabel;
+import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -32,7 +33,11 @@ public class TestDetailsForm extends Form {
         current = this ;
         setTitle("Questions");
         setLayout(BoxLayout.y());
-        add(new Label("Questions Test"));
+        Button btnNote = new Button("Les Notes") ;
+        Label title = new Label("Questions Test") ;
+        title.setUIID("title") ;
+        add(title); 
+        add(btnNote) ;
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack()); 
         
         Test test = ServiceTest.getInstance().getListTestFormateur(user.getId()).get(0);
@@ -40,6 +45,12 @@ public class TestDetailsForm extends Form {
         for(Question q : questions){
             addItem(q) ;
         }
+        
+        btnNote.addActionListener((evt) -> {
+            Form hi = new NotesChart().execute(1); 
+            hi.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> current.showBack()); 
+            hi.show(); 
+        });
     }
 
     private void addItem(Question q) {
@@ -53,6 +64,7 @@ public class TestDetailsForm extends Form {
        Label lbid = new Label(q.getId()+"") ;
        lbid.setVisible(false);     
        
+        c1.setUIID("containerQuestion");
        c1.addAll(lbQposee,lbRep,lbProp1,lbProp2,lbPop3,lbNote) ;
        c1.setLeadComponent(lbQposee);
        add(c1 );

@@ -33,8 +33,7 @@ public class QuizBackForm extends Form{
         setTitle("Quiz");
         setLayout(BoxLayout.y());
         Button btnAddQuiz = new Button("Add New Quiz") ;
-        add(btnAddQuiz) ;
-        add(new Label("Tous les Quiz"));
+        add(btnAddQuiz) ; 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack()); 
         
         ArrayList<Quiz> quizzes = ServiceQuiz.getInstance().getListQuizFormateur(user.getId());
@@ -54,8 +53,8 @@ public class QuizBackForm extends Form{
        lbid.setVisible(false);
        
        lbSujet.addPointerPressedListener((evt) -> {
-           String cmd = Dialog.show("Error", "*champ obligatoire", new Command("questions"),
-                            new Command("updtae"),new Command("delete")).getCommandName() ;
+           String cmd = Dialog.show("Detais","Quiz : " + q.getSujet(), new Command("questions"),
+                            new Command("update"),new Command("delete")).getCommandName() ;
                 switch (cmd) {
                     case "delete":
                         if(ServiceQuiz.getInstance().deleteQuiz(q, user.getId())){
@@ -65,7 +64,7 @@ public class QuizBackForm extends Form{
                         else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
                         break;
-                    case "updtae":
+                    case "update":
                         new UpdateQuizForm(current, q.getId()).show() ; 
                         break;
                     case "questions":
@@ -75,8 +74,10 @@ public class QuizBackForm extends Form{
                         break;
                 }          
        });
-       
+       lbSujet.setUIID("lbl");
+       c1.setUIID("contQuiz"); 
        c1.add(lbSujet) ;
+       
        c1.setLeadComponent(lbSujet);
        add(c1 );
        refreshTheme(); 

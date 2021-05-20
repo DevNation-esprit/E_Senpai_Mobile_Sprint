@@ -37,7 +37,9 @@ public class QuizDetailsForm extends Form{
         setLayout(BoxLayout.y());
         Button btnAdddQuest = new Button("Add new Question") ;
         add(btnAdddQuest) ;
-        add(new Label("Questions Quiz"));
+        Label title = new Label("Questions Quiz") ;
+        title.setUIID("title") ;
+        add(title); 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack()); 
         
         quiz = ServiceQuiz.getInstance().getQuiz(idquiz);
@@ -63,25 +65,27 @@ public class QuizDetailsForm extends Form{
        lbid.setVisible(false);     
        
        lbQposee.addPointerPressedListener((evt) -> {
-           String cmd = Dialog.show("Error", "*champ obligatoire", new Command("updtae"),
-                   new Command("delete")).getCommandName() ;
+           String cmd = Dialog.show("Details", "Question ", new Command("update"),
+                   new Command("delete"),new Command("fermer")).getCommandName() ;
                 switch (cmd) {
                     case "delete":
-                      /*  if(ServiceQuiz.getInstance().deleteQuiz(q, user.getId())){
-                            Dialog.show("Success","Quiz supprimé avec success",new Command("OK"));
+                        if(ServiceQuestion.getInstance().deleteQuestion(q,quiz.getId())){
+                            Dialog.show("Success","Question supprimée avec success",new Command("OK"));
                         refreshTheme() ;
                         }
                         else
-                            Dialog.show("ERROR", "Server error", new Command("OK"));*/
+                            Dialog.show("ERROR", "Server error", new Command("OK"));
                         break;
-                    case "updtae":
+                    case "update":
                        new updateQuestionForm(current,quiz.getId(), q.getId()).show();
+                        break;
+                    case "fermer" : 
                         break;
                     default:
                         break;
                 }  
        });
-       
+       c1.setUIID("containerQuestion");
        c1.addAll(lbQposee,lbRep,lbProp1,lbProp2,lbPop3,lbNote) ;
        c1.setLeadComponent(lbQposee);
        add(c1 );

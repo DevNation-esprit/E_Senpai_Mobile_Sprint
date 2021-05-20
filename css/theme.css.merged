@@ -1,0 +1,87 @@
+
+/* E:\3A18\tp_mobile\e_senpai_mobile\css\theme.css */
+#Constants {
+    includeNativeBool: true; 
+}
+
+lbl{
+    color: #D75404;
+    background: lightgray;
+    margin-top : 20px;
+  border: 2px solid #D75404;
+  padding: 10px;
+  border-radius: 25px;
+    
+}
+
+contQuiz{
+padding-left : 25px;
+padding-right: 25px;
+}
+
+title{
+  color: #666666;
+  text-align: center;
+}
+
+rbtns{
+  margin-top : 25px;
+  margin-left : 50px;
+}
+
+Qposee{
+    color: #D75404;
+    background: lightgray;
+    margin-top : 20px;
+    border: 2px solid #D75404;
+     padding: 10px;
+     border-radius: 25px;
+    margin-right : 20px;
+    margin-left : 20px;
+}
+
+btn{
+color : #ffffff ;
+background-color: #D75404;
+border: 2px solid #D75404;
+border-radius: 25px;
+padding: 15px;
+margin-left : 250px;
+margin-top : 100px ;
+text-align: center;
+}
+
+containerQuestion{
+ padding-left : 25px;
+ padding-right: 25px;
+ margin-left : 25px ;
+ margin-right : 25px ;
+ background-color: lightgray;
+ margin-top : 25px;
+ border: 2px solid #D75404;
+ border-radius: 25px;
+ 
+}
+
+btnAdd{
+ color : #ffffff ;
+ background-color: #D75404;
+ border: 2px solid #D75404;
+ border-radius: 25px;
+ padding: 15px;
+ margin-top : 25px ;
+ text-align: center;
+ width : 25% ;
+ margin-left : 100px ;
+ margin-right : 100px ;
+}
+
+inputField{
+ border: 2px solid #D75404;
+ border-radius: 25px;
+ margin-top : 50px;
+}
+
+
+
+/* End E:\3A18\tp_mobile\e_senpai_mobile\css\theme.css */

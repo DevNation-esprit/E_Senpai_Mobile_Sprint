@@ -10,6 +10,7 @@ import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.entities.Quiz;
@@ -29,7 +30,9 @@ public class AjouterQuizForm  extends Form{
      public AjouterQuizForm(Form previous) {
         setTitle("Add a new Quiz");
         setLayout(BoxLayout.y());
-        
+        Label title = new Label("Ajouter Quiz") ;
+        title.setUIID("title") ;
+        add(title); 
         TextField tfSujet = new TextField("","sujet");
         Button btnValider = new Button("Ajouter Quiz");
         
@@ -51,7 +54,8 @@ public class AjouterQuizForm  extends Form{
                     
                 }
         });
-        
+        btnValider.setUIID("btnAdd");
+        tfSujet.setUIID("inputField");
         addAll(tfSujet,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
                 , e-> previous.showBack()); 

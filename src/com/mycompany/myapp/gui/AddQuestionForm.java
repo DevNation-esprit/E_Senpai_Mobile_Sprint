@@ -10,6 +10,7 @@ import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.entities.Question;
@@ -29,7 +30,9 @@ public class AddQuestionForm extends Form {
      public AddQuestionForm(Form previous,int idQuiz) {
         setTitle("Add a new Question");
         setLayout(BoxLayout.y());
-        
+         Label title = new Label("Ajouter Question") ;
+        title.setUIID("title") ;
+        add(title); 
         TextField tfQposee = new TextField("","question posée");
         TextField tfRep = new TextField("","Reponse Corr");
         TextField tfProp1 = new TextField("","Proposition 1");
@@ -63,7 +66,13 @@ public class AddQuestionForm extends Form {
 
             }
         });
-        
+        btnValider.setUIID("btnAdd");
+        tfQposee.setUIID("inputField");
+        tfRep.setUIID("inputField");
+        tfProp1.setUIID("inputField");
+        tfProp2.setUIID("inputField");
+        tfProp3.setUIID("inputField");
+        tfnote.setUIID("inputField");
         addAll(tfQposee,tfRep,tfProp1,tfProp2,tfProp3,tfnote,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
                 , e-> previous.showBack()); 
