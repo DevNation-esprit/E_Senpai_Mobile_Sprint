@@ -4,16 +4,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Methnani/Documents/NetBeansProjects/ESENPAImobile/src/com/mycompany/myapp/Services/Services.java</file>
-            <file>file:/C:/Users/Methnani/Documents/NetBeansProjects/ESENPAImobile/src/com/mycompany/myapp/gui/AddBlog.java</file>
-            <file>file:/C:/Users/Methnani/Documents/NetBeansProjects/ESENPAImobile/src/com/mycompany/myapp/entities/Blog.java</file>
-            <file>file:/C:/Users/Methnani/Documents/NetBeansProjects/ESENPAImobile/src/com/mycompany/myapp/gui/ShowBlog.java</file>
-            <file>file:/C:/Users/Methnani/Documents/NetBeansProjects/ESENPAImobile/src/com/mycompany/myapp/entities/Post.java</file>
-            <file>file:/C:/Users/Methnani/Documents/NetBeansProjects/ESENPAImobile/src/com/mycompany/myapp/gui/ShowPost.java</file>
-            <file>file:/C:/Users/Methnani/Documents/NetBeansProjects/ESENPAImobile/src/com/mycompany/myapp/MyApplication.java</file>
-            <file>file:/C:/Users/Methnani/Documents/NetBeansProjects/ESENPAImobile/src/com/mycompany/myapp/gui/AddPost.java</file>
-            <file>file:/C:/Users/Methnani/Documents/NetBeansProjects/ESENPAImobile/src/com/mycompany/myapp/gui/Home.java</file>
-            <file>file:/C:/Users/Methnani/Documents/NetBeansProjects/ESENPAImobile/src/com/mycompany/myapp/utilities/Lien.java</file>
+            <file>file:/C:/Users/21656/Documents/NetBeansProjects/ESENPAI-Mobile/src/com/mycompany/myapp/ServiceMessage.java</file>
+            <file>file:/C:/Users/21656/Documents/NetBeansProjects/ESENPAI-Mobile/src/com/mycompany/entities/Message.java</file>
+            <file>file:/C:/Users/21656/Documents/NetBeansProjects/ESENPAI-Mobile/src/com/mycompany/entities/Discussion.java</file>
+            <file>file:/C:/Users/21656/Documents/NetBeansProjects/ESENPAI-Mobile/src/com/mycompany/gui/DiscussionForm.java</file>
+            <file>file:/C:/Users/21656/Documents/NetBeansProjects/ESENPAI-Mobile/src/com/mycompany/myapp/ServiceDiscussion.java</file>
         </group>
     </open-files>
 </project-private>
